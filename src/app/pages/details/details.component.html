@@ -1,0 +1,11 @@
+<section class="flex items-center">
+    <div class="w-1/4 mx-auto  border border-green-400/50 rounded-md  shadow"><img [src]="protectedDetails.imageCover" class="w-full" alt=""></div>
+    <div class="w-1/2 border p-10 border-green-400/50 rounded-md  shadow  text-center">
+        <h2>{{protectedDetails.title}}</h2>
+        <br>
+        <p>{{protectedDetails.description}}</p>
+        <button (click)="addcart(protectedDetails.id)" class="bg-green-600 text-white py-2 px-10 border rounded w-[90%] mx-auto block">
+            Add To Cart
+        </button>
+    </div>
+</section>

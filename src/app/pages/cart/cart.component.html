@@ -1,0 +1,36 @@
+<section class="bg-gray-50 border rounded p-4 shadow w-[75%] mx-auto">
+    <h1 class="text-center text-green-600 text-3xl">Shop Cart</h1>
+    <h3 class="text-green-600">Total Price :{{cartdetails.totalCartPrice}} EGP</h3>
+    <button (click)="clearitemcart()"class="text-xs bg-red-900 text-white rounded px-6 py-1 block ms-auto">
+        Clear Cart
+    </button>
+    @for (item of cartdetails.products; track item.product._id) {
+        <div class="grid md:grid-cols-[10%,minmax(0,1fr)] gap-4">
+            <!-- img -->
+            <div>
+                <img [src]="item.product.imageCover" class="w-full h-[100px] object-contain" [alt]="item.product.title" />
+            </div>
+            <!-- info -->
+            <div class="flex justify-between items-center">
+                <div>
+                    <h3>{{item.product.title}}</h3>
+                    <h4 class="text-green-500">price:{{item.price}} EGP</h4>
+                    <button (click)="removeitemcart(item.product._id)"><i class="fas fa-trash-can text-green-600"></i> Remove</button>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button (click)="updataitemcart(item.product._id ,item.count+1)" class="text-3xl text-green-600">
+                        <i class="fa-regular fa-square-plus"></i>
+                    </button>
+                    <span>{{item.count}}</span>
+                    <button (click)="updataitemcart(item.product._id ,item.count-1 )" class="text-3xl text-green-600">
+                        <i class="fa-regular fa-square-minus"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    }
+    <button [routerLink]="['/Checkout',cartdetails._id]" class="bg-green-600 text-white py-2 px-10 border rounded hover:bg-green-400 transition-colors duration-150">
+        Payment
+    </button>
+
+</section>
